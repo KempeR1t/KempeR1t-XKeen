@@ -1,0 +1,136 @@
+{
+  "routing": {
+	"domainStrategy": "IPIfNonMatch",
+    "rules": [
+	  // Блокировка QUIC
+	  {
+        "port": "443",
+        "type": "field",
+        "network": "udp",
+        "outboundTag": "block"
+      },
+      // Блокировка  |   Уязвимые UDP порты
+      {
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "block",
+        "type": "field",
+        "network": "udp",
+        "port": "135, 137, 138, 139"
+      },
+      // Блокировка | Реклама и аналитика
+      {
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "block",
+        "type": "field",
+        "domain": [
+          "ext:geosite_v2fly.dat:category-ads-all",
+          "google-analytics",
+          "analytics.yandex",
+          "appcenter.ms",
+          "app-measurement.com",
+          "firebase.io",
+          "crashlytics.com"
+        ]
+      },
+	  // VPS подключение  | Telegram Domains
+	  {
+        "type": "field",
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "vless-reality",
+        "domain": [
+          "regexp:^([\\w\\-\\.]+\\.)?t\\.me$",
+          "regexp:^([\\w\\-\\.]+\\.)?telegram\\.org$",
+          "regexp:^([\\w\\-\\.]+\\.)?telegram\\.me$",
+          "regexp:^([\\w\\-\\.]+\\.)?telegra\\.ph$",
+          "regexp:^([\\w\\-\\.]+\\.)?telesco\\.pe$"
+        ]
+      },
+	  // VPS подключение  |  Telegram IP
+	  {
+        "type": "field",
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "vless-reality",
+        "ip": [
+          "91.108.4.0/22",
+          "91.108.8.0/22",
+          "91.108.12.0/22",
+          "91.108.16.0/22",
+          "91.108.20.0/22",
+          "91.108.56.0/22",
+          "95.161.64.0/20",
+          "149.154.160.0/20",
+          "185.76.151.0/24"
+        ]
+      },
+      // VPS подключение  |  Доменные имена
+      {
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "vless-reality",
+        "type": "field",
+        "domain": [
+        "ext:geosite_v2fly.dat:speedtest",
+		"ext:geosite_v2fly.dat:discord",
+        "ext:geosite_zkeen.dat:domains",
+        "ext:geosite_zkeen.dat:other",
+        "ext:geosite_zkeen.dat:youtube",
+		"ext:geosite_v2fly.dat:spotify",
+		"ext:geosite_zkeen.dat:politic",
+        "ext:geosite_v2fly.dat:openai",
+		"ext:geosite_v2fly.dat:nvidia",
+		"ext:geosite_v2fly.dat:netflix",
+		"ext:geosite_v2fly.dat:google-gemini",
+		"ext:geosite_v2fly.dat:instagram",
+		"ext:geosite_v2fly.dat:facebook",
+		"auditcrowd.space",
+		"adguard-vpn.com",
+		"adguardvpn.com",
+		"adguard-vpn.cc",
+        "2ip.ru",
+        "2ip.io"
+        ]
+      },
+      {
+      // VPS подключение  |  IP адреса
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "vless-reality",
+        "type": "field",
+        "ip": [
+        "ext:geoip_v2fly.dat:twitter",
+        "ext:geoip_zkeenip.dat:youtube"
+        ]
+      },
+	  // DISCORD
+	  {
+        "type": "field",
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "vless-reality",
+        "network": "udp",
+        "port": "50000-50030",
+        "ip": [
+          "ext:geoip_zkeenip.dat:discord"
+         ]
+      },
+	  // Прямое подключение  |  Торрент
+      {
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field",
+        "protocol": ["bittorrent"]
+      },
+	  // Прямое подключение | Steam
+	  {      
+		"inboundTag": ["redirect", "tproxy"],
+	    "outboundTag": "direct",      
+	    "domain": [      
+		  "ext:geosite_v2fly.dat:steam"      
+	    ]      
+	  },
+      // Прямое подключение  |  Все остальное
+      {
+        "inboundTag": ["redirect", "tproxy"],
+        "outboundTag": "direct",
+        "type": "field"
+      }
+    ]
+  }
+}
