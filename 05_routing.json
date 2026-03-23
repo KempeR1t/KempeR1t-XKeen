@@ -73,6 +73,8 @@
         "ext:geosite_zkeen.dat:domains",
         "ext:geosite_zkeen.dat:other",
         "ext:geosite_zkeen.dat:youtube",
+		"ext:zkeen.dat:youtube",
+		"ext:geosite_v2fly.dat:youtube",
 		"ext:geosite_v2fly.dat:spotify",
 		"ext:geosite_zkeen.dat:politic",
         "ext:geosite_v2fly.dat:openai",
