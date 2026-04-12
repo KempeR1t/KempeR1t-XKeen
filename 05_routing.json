@@ -4,9 +4,11 @@
     "rules": [
 	  // Блокировка QUIC
 	  {
-        "port": "443",
-        "type": "field",
         "network": "udp",
+        "port": "443",
+        "ip": [
+          "ext:zkeenip.dat:!ru"
+        ],
         "outboundTag": "block"
       },
       // Блокировка  |   Уязвимые UDP порты
