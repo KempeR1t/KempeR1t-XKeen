@@ -70,6 +70,8 @@
         "outboundTag": "vless-reality",
         "type": "field",
         "domain": [
+		"ext:geosite_v2fly.dat:jetbrains",
+   		"ext:geosite_v2fly.dat:jetbrains-ai",
         "ext:geosite_v2fly.dat:speedtest",
 		"ext:geosite_v2fly.dat:discord",
         "ext:geosite_zkeen.dat:domains",
