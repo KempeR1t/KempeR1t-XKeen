@@ -115,7 +115,9 @@
 		"pkgautoupdate7.synology.com",
 		"pkgupdate7.synology.com",
 		"pkgautoupdate.synologyupdate.com",
-		"global.synologydownload.com"
+		"global.synologydownload.com",
+		"database.clamav.net",
+		"myds.synology.com"
         ]
       },
       {
