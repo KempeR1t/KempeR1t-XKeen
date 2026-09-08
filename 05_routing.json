@@ -117,7 +117,10 @@
 		"pkgautoupdate.synologyupdate.com",
 		"global.synologydownload.com",
 		"database.clamav.net",
-		"myds.synology.com"
+		"myds.synology.com",
+    	"clawhub.ai",
+    	"tailscale.com",
+		"trakt.tv"
         ]
       },
       {
